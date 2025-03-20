@@ -1,8 +1,23 @@
 import SearchBar from "@/components/SearchBar";
-import { Image, ScrollView, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { useRouter } from "expo-router";
+import useFetch from "@/services/useFetch";
+import { fetchMovies } from "@/services/api";
+import MovieCard from "@/components/movie-card";
 export default function Index() {
   const router = useRouter();
+  const {
+    data: movies,
+    loading: movieLoading,
+    error: movieError,
+  } = useFetch(() => fetchMovies({ query: "" }));
   return (
     <View className="flex-1 bg-primary">
       <Image
@@ -16,17 +31,49 @@ export default function Index() {
           minHeight: "100%",
           paddingBottom: 10,
         }}
+        // style={{ flexDirection: "column" }}
       >
         <Image
           source={require("@/assets/icons/logo.png")}
           className="w-12 h-10 mt-20 mb-5 mx-auto"
         />
-        <View>
-          <SearchBar
-            onPress={() => router.push("/search")}
-            placeholder="Search for a movie."
+
+        {movieLoading ? (
+          <ActivityIndicator
+            size={"small"}
+            color={"#0000ff"}
+            className="mt-10-center"
           />
-        </View>
+        ) : movieError ? (
+          <Text style={{ color: "white" }}>Error: {movieError?.message}</Text>
+        ) : (
+          <View>
+            <SearchBar
+              onPress={() => router.push("/search")}
+              placeholder="Search for a movie."
+            />
+            <Text className="capitalize text-lg mt-5 font-bold text-white mb-3">
+              Latest movies
+            </Text>
+            <>
+              <FlatList
+                data={movies}
+                renderItem={({ item }) => <MovieCard {...item} />}
+                // style={{ flexDirection: "row", overflow: "scroll" }}
+                keyExtractor={(item) => item.id}
+                numColumns={3}
+                columnWrapperStyle={{
+                  justifyContent: "flex-start",
+                  gap: 20,
+                  paddingRight: 5,
+                  marginBottom: 10,
+                }}
+                className="mt-2 pb-32"
+                scrollEnabled={false}
+              />
+            </>
+          </View>
+        )}
       </ScrollView>
     </View>
   );
