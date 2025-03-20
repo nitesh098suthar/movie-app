@@ -101,7 +101,7 @@ const TabIcon = ({ focused, title }: any) => {
     <>
       <View className="flex-1 justify-center items-center min-h-16 rounded-full min-w-[112px] mt-4 overflow-hidden">
         <Image source={iconSource} tintColor={"#A8B5DB"} className="size-5" />
-        <Text className="text-[#A8B5DB]">{title}</Text>
+        {/* <Text className="text-[#A8B5DB]">{title}</Text> */}
       </View>
     </>
   );
