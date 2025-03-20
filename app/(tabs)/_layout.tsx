@@ -1,9 +1,13 @@
 import React from "react";
 import { Tabs } from "expo-router";
-import { Image, ImageBackground, Text } from "react-native";
+import { Image, ImageBackground, Text, View } from "react-native";
 const _layout = () => {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarShowLabel: false,
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -60,18 +64,28 @@ const TabIcon = ({ focused, title }: any) => {
 
   const iconSource: any = iconMap[title];
 
+  if (focused) {
+    return (
+      <>
+        <ImageBackground
+          source={require("@/assets/images/highlight.png")}
+          className="flex-1 justify-center items-center min-h-14 rounded-full min-w-[112px] mt-4 overflow-hidden"
+          style={{ flexDirection: "row" }}
+        >
+          <Image source={iconSource} tintColor={"black"} className="" />
+          <Text className="text-secondary text-base font-semibold ml-2">
+            {title}
+          </Text>
+        </ImageBackground>
+      </>
+    );
+  }
   return (
     <>
-      <ImageBackground
-        source={require("@/assets/images/highlight.png")}
-        className="flex-1 justify-center items-center min-h-14 rounded-full min-w-[112px] mt-4 overflow-hidden"
-        style={{ flexDirection: "row" }}
-      >
-        <Image source={iconSource} className="" />
-        <Text className="text-secondary text-base font-semibold ml-2">
-          {title}
-        </Text>
-      </ImageBackground>
+      <View className="flex-1 justify-center items-center min-h-14 rounded-full min-w-[112px] mt-4 overflow-hidden">
+        <Image source={iconSource} tintColor={"#A8B5DB"} className="size-5" />
+        <Text className="text-[#A8B5DB]">{title}</Text>
+      </View>
     </>
   );
 };
