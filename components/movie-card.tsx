@@ -18,9 +18,27 @@ const MovieCard = ({
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
               : "https://placehold.co/600x400/1a1a1a/ffffff.png",
           }}
-          className="w-full h-48" // Add dimensions for the Image
+          className="w-full h-48 rounded-lg"
+          resizeMode="cover"
         />
-        <Text className="text-sm font-bold mt-2 text-white">{title}</Text>
+        <Text className="text-sm font-bold mt-2 text-white" numberOfLines={1}>
+          {title}
+        </Text>
+        <View className="flex-row items-center justify-start gap-x-1">
+          <Image
+            source={require("@/assets/icons/star.png")}
+            className="size-4"
+          />
+          <Text className="text-xs uppercase font-bold text-white">
+            {Math.round(vote_average)}
+          </Text>
+        </View>
+        <View className="flex-row items-center justify-between">
+          <Text className="text-xs text-light-300 font-medium uppercase">
+            {release_date?.split("-")[0]}
+          </Text>
+          <Text className="text-xs text-light-300 font-medium">Movie</Text>
+        </View>
       </TouchableOpacity>
     </Link>
   );
