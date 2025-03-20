@@ -11,7 +11,7 @@ const MovieCard = ({
 }: Movie) => {
   return (
     <Link href={`/movie/${id}`} asChild>
-      <TouchableOpacity className="w-1/3">
+      <TouchableOpacity className="w-[32%]">
         <Image
           source={{
             uri: poster_path
