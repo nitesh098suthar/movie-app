@@ -30,7 +30,7 @@ const MovieCard = ({
             className="size-4"
           />
           <Text className="text-xs uppercase font-bold text-white">
-            {Math.round(vote_average)}
+            {(vote_average)}
           </Text>
         </View>
         <View className="flex-row items-center justify-between">
