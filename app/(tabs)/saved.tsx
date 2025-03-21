@@ -3,8 +3,10 @@ import React from "react";
 
 const Saved = () => {
   return (
-    <View className="bg-primary flex-1">
-      <ScrollView></ScrollView>
+    <View className="bg-primary flex-1 h-full w-full items-center justify-center">
+      <Text className="" style={{ color: "grey" }}>
+        Coming Soon
+      </Text>
     </View>
   );
 };
