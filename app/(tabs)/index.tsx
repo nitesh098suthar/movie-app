@@ -11,8 +11,11 @@ import { useRouter } from "expo-router";
 import useFetch from "@/services/useFetch";
 import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/movie-card";
+import { useState } from "react";
 export default function Index() {
-  const router = useRouter();
+  // const [searchQuery, setSearchQuery] = useState("");
+
+  // const router = useRouter();
   const {
     data: movies,
     loading: movieLoading,
@@ -40,7 +43,7 @@ export default function Index() {
 
         {movieLoading ? (
           <ActivityIndicator
-            size={"small"}
+            size={"large"}
             color={"#0000ff"}
             className="mt-10-center"
           />
@@ -48,11 +51,13 @@ export default function Index() {
           <Text style={{ color: "white" }}>Error: {movieError?.message}</Text>
         ) : (
           <View>
-            <SearchBar
+            {/* <SearchBar
               onPress={() => router.push("/search")}
               placeholder="Search for a movie."
-            />
-            <Text className="capitalize text-lg mt-5 font-bold text-white mb-3">
+              value={searchQuery}
+              onChangeText={(text: string) => setSearchQuery(text)}
+            /> */}
+            <Text className="capitalize text-xl mt-5 font-bold text-white mb-3">
               Latest movies
             </Text>
             <>
@@ -77,4 +82,5 @@ export default function Index() {
       </ScrollView>
     </View>
   );
+  
 }

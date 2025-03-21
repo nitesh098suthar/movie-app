@@ -16,7 +16,7 @@ const _layout = () => {
           backgroundColor: "#0f0D23",
           borderRadius: 50,
           marginHorizontal: 20,
-          marginBottom: 36,
+          marginBottom: 12,
           height: 52,
           position: "absolute",
           overflow: "hidden",
@@ -36,12 +36,12 @@ const _layout = () => {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="search"
         options={{
-          title: "profile",
+          title: "search",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} title={"Profile"} />
+            <TabIcon focused={focused} title={"Search"} />
           ),
         }}
       />
@@ -56,12 +56,12 @@ const _layout = () => {
         }}
       />
       <Tabs.Screen
-        name="search"
+        name="profile"
         options={{
-          title: "search",
+          title: "profile",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} title={"Search"} />
+            <TabIcon focused={focused} title={"Profile"} />
           ),
         }}
       />
