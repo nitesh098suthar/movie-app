@@ -1,10 +1,10 @@
 import MovieDetails from "../app/movie/[id]";
 export const TMDB_CONFIG = {
   BASE_URL: "https://api.themoviedb.org/3",
-  API_TOKEN: process.env.EXPO_PUBLIC_MOVIE_API_KEY, // Use the token from .env
+  API_TOKEN: process.env.MOVIE_API_KEY, // Use the token from .env
   headers: {
     accept: "application/json",
-    Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`,
+    Authorization: `Bearer ${process.env.MOVIE_API_KEY}`,
   },
 };
 
