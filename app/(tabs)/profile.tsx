@@ -30,7 +30,7 @@ const Profile = () => {
   // Static profile data
   const profile = {
     avatar: "https://example.com/avatar.jpg", // Replace with a real image URL or local asset
-    name: "Nitesh Kumar",
+    name: "Nitesh Kumar Suthar",
     username: "@nitesh098suthar",
     joinDate: "2020-05-15",
     bio: "A passionate developer and movie enthusiast. Lover of sci-fi and popcorn.",
